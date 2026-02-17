@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useCallback } from 'react';
 import { Question } from '../types';
 
@@ -45,8 +46,8 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
     // Tipe: Benar/Salah atau Sesuai/Tidak Sesuai (Render TABEL)
     if (type.includes('benar') || type.includes('sesuai')) {
       const isBS = type.includes('benar');
-      const headerRight1 = isBS ? 'B' : 'Sesuai';
-      const headerRight2 = isBS ? 'S' : 'Tidak';
+      const headerRight1 = isBS ? 'Benar' : 'Sesuai';
+      const headerRight2 = isBS ? 'Salah' : 'Tidak Sesuai';
 
       return (
         <table className="soal-table">
@@ -54,8 +55,8 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
             <tr className="bg-gray-50">
               <th className="w-8">No</th>
               <th>Pernyataan</th>
-              <th className="w-12">{headerRight1}</th>
-              <th className="w-12">{headerRight2}</th>
+              <th className="px-2 min-w-[60px]">{headerRight1}</th>
+              <th className="px-2 min-w-[60px]">{headerRight2}</th>
             </tr>
           </thead>
           <tbody>
