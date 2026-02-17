@@ -9,10 +9,15 @@ export interface Question {
   soal: string;
   img?: string;
   a: string;
+  imgA?: string;
   b: string;
+  imgB?: string;
   c: string;
+  imgC?: string;
   d: string;
+  imgD?: string;
   e?: string;
+  imgE?: string;
   kunci: string;
   pembahasan: string;
   token: string;

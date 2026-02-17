@@ -62,7 +62,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
           <tbody>
             {optionsKeys.map((key, idx) => {
               const val = (question as any)[key];
-              if (!val || val.trim() === '') return null;
+              if (!val || val.trim() === '' || val.trim() === 'undefined') return null;
               return (
                 <tr key={key}>
                   <td>{idx + 1}</td>
@@ -77,44 +77,39 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
       );
     }
 
-    // Tipe: Pilihan Jamak (Render KOTAK CENTANG)
-    if (type.includes('jamak') || type.includes('mcma')) {
-      return (
-        <div className="mt-1.5 space-y-1">
-          {optionsKeys.map((key) => {
-            const val = (question as any)[key];
-            if (!val || val.trim() === '') return null;
-            return (
-              <div key={key} className="flex items-start">
-                <span className="check-box mt-1 shrink-0"></span>
-                <div 
-                  contentEditable 
-                  suppressContentEditableWarning 
-                  className="flex-1 outline-none focus:bg-blue-50/50 px-0.5 rounded"
-                  dangerouslySetInnerHTML={{ __html: val }}
-                />
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
+    // Tipe: Pilihan Jamak atau Ganda
+    const isMultiple = type.includes('jamak') || type.includes('mcma');
 
-    // Default: Pilihan Ganda (Render ABCD)
     return (
-      <div className="mt-1.5 space-y-0.5">
+      <div className="mt-1.5 space-y-1">
         {optionsKeys.map((key, idx) => {
           const val = (question as any)[key];
-          if (!val || val.trim() === '') return null;
+          const imgUrl = (question as any)[`img${key.toUpperCase()}`];
+          
+          if ((!val || val.trim() === '' || val.trim() === 'undefined') && !imgUrl) return null;
+
           return (
             <div key={key} className="flex items-start">
-              <span className="font-bold mr-1.5 shrink-0 w-4">{String.fromCharCode(65 + idx)}.</span>
-              <div 
-                contentEditable 
-                suppressContentEditableWarning 
-                className="flex-1 outline-none focus:bg-blue-50/50 px-0.5 rounded"
-                dangerouslySetInnerHTML={{ __html: val }}
-              />
+              {isMultiple ? (
+                <span className="check-box mt-1 shrink-0"></span>
+              ) : (
+                <span className="font-bold mr-1.5 shrink-0 w-4">{String.fromCharCode(65 + idx)}.</span>
+              )}
+              <div className="flex-1">
+                {val && val.trim() !== 'undefined' && (
+                  <div 
+                    contentEditable 
+                    suppressContentEditableWarning 
+                    className="outline-none focus:bg-blue-50/50 px-0.5 rounded"
+                    dangerouslySetInnerHTML={{ __html: val }}
+                  />
+                )}
+                {imgUrl && imgUrl.trim() !== '' && (
+                  <div className="mt-1">
+                    <img src={imgUrl} alt="" className="max-w-[150px] h-auto border border-gray-100 rounded shadow-sm block" />
+                  </div>
+                )}
+              </div>
             </div>
           );
         })}
@@ -138,7 +133,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
             dangerouslySetInnerHTML={{ __html: question.soal }}
           />
 
-          {question.img && (
+          {question.img && question.img.trim() !== '' && (
             <div className="my-2 text-center">
               <img src={question.img} alt="" className="max-w-[80%] mx-auto h-auto border border-gray-100 rounded shadow-sm" />
             </div>
