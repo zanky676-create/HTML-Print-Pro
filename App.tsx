@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react';
-import { parseExcelFile } from './services/excelParser';
-import { Question, HeaderInfo, AppSettings } from './types';
-import QuestionRenderer from './components/QuestionRenderer';
-import EditorToolbar from './components/EditorToolbar';
+import { parseExcelFile } from './services/excelParser.ts';
+import { Question, HeaderInfo, AppSettings } from './types.ts';
+import QuestionRenderer from './components/QuestionRenderer.tsx';
+import EditorToolbar from './components/EditorToolbar.tsx';
 import { FileUp, Printer, Eye, EyeOff, Building2 } from 'lucide-react';
 
 const App: React.FC = () => {
