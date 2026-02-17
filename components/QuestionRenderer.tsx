@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef, useCallback } from 'react';
 import { Question } from '../types';
+import { formatContent } from '../services/markdownConverter';
 
 interface QuestionRendererProps {
   question: Question;
@@ -66,7 +67,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
               return (
                 <tr key={key}>
                   <td>{idx + 1}</td>
-                  <td contentEditable suppressContentEditableWarning dangerouslySetInnerHTML={{ __html: val }} />
+                  <td contentEditable suppressContentEditableWarning dangerouslySetInnerHTML={{ __html: formatContent(val) }} />
                   <td></td>
                   <td></td>
                 </tr>
@@ -101,7 +102,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
                     contentEditable 
                     suppressContentEditableWarning 
                     className="outline-none focus:bg-blue-50/50 px-0.5 rounded"
-                    dangerouslySetInnerHTML={{ __html: val }}
+                    dangerouslySetInnerHTML={{ __html: formatContent(val) }}
                   />
                 )}
                 {imgUrl && imgUrl.trim() !== '' && (
@@ -130,7 +131,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
             contentEditable 
             suppressContentEditableWarning 
             className="mb-1.5 outline-none focus:bg-blue-50/50 px-0.5 rounded w-full font-medium"
-            dangerouslySetInnerHTML={{ __html: question.soal }}
+            dangerouslySetInnerHTML={{ __html: formatContent(question.soal) }}
           />
 
           {question.img && question.img.trim() !== '' && (
@@ -148,7 +149,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
                 contentEditable 
                 suppressContentEditableWarning 
                 className="outline-none mt-1"
-                dangerouslySetInnerHTML={{ __html: question.pembahasan }}
+                dangerouslySetInnerHTML={{ __html: formatContent(question.pembahasan) }}
               />
             </div>
           )}
