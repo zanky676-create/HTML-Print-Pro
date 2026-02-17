@@ -1,0 +1,5 @@
+{
+  "name": "HTML Print Professional",
+  "description": "A high-performance React application for importing exam questions from Excel, rendering professional layouts (1-3 columns) with KaTeX math support, and direct content editing for perfect print results.",
+  "requestFramePermissions": []
+}

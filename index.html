@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <script>
+    if (document.compatMode === 'BackCompat') {
+      try {
+        Object.defineProperty(document, 'compatMode', {
+          get: function() { return 'CSS1Compat'; }
+        });
+      } catch (e) {}
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Print Professional</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    @media print {
+      .no-print { display: none !important; }
+      body { background-color: white !important; margin: 0 !important; padding: 0 !important; }
+      .page-container { 
+        box-shadow: none !important; 
+        width: 100% !important; 
+        margin: 0 !important; 
+        padding: 0 !important;
+        max-width: none !important;
+      }
+      @page { 
+        size: A4; 
+        margin: 12mm 15mm; 
+      }
+    }
+
+    .question-item { 
+      break-inside: avoid-column;
+      page-break-inside: avoid;
+      display: block;
+      width: 100%;
+      position: relative;
+    }
+
+    [contenteditable]:focus { 
+      outline: 2px solid #3b82f6; 
+      border-radius: 4px; 
+      padding: 2px;
+      background-color: rgba(59, 130, 246, 0.05);
+    }
+    
+    .preview-area { 
+      font-family: 'Times New Roman', Times, serif; 
+      line-height: 1.3;
+      hyphens: auto;
+    }
+    
+    /* Styling Tabel Soal */
+    .soal-table { 
+      border-collapse: collapse; 
+      width: 100%; 
+      margin-top: 4px;
+      font-size: 0.95em;
+    }
+    .soal-table th, .soal-table td { 
+      border: 1px solid black; 
+      padding: 4px; 
+      text-align: center;
+      vertical-align: middle;
+    }
+    .soal-table td:nth-child(2) { text-align: left; }
+    
+    .check-box {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid black;
+      margin-right: 6px;
+      vertical-align: middle;
+      border-radius: 2px;
+    }
+    
+    .katex { font-size: 1.05em !important; }
+
+    /* Custom Scrollbar for modern look */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@^19.2.4",
+      "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+      "react/": "https://esm.sh/react@^19.2.4/",
+      "xlsx": "https://esm.sh/xlsx@^0.18.5",
+      "lucide-react": "https://esm.sh/lucide-react@^0.564.0"
+    }
+  }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div id="root"></div>
+</body>
+</html>
