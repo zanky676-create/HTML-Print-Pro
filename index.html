@@ -2,15 +2,6 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <script>
-    if (document.compatMode === 'BackCompat') {
-      try {
-        Object.defineProperty(document, 'compatMode', {
-          get: function() { return 'CSS1Compat'; }
-        });
-      } catch (e) {}
-    }
-  </script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,21 +81,22 @@
     ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: #555; }
   </style>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@19.2.4",
-    "react-dom": "https://esm.sh/react-dom@19.2.4",
-    "react-dom/client": "https://esm.sh/react-dom@19.2.4/client",
-    "xlsx": "https://esm.sh/xlsx@0.18.5",
-    "lucide-react": "https://esm.sh/lucide-react@0.564.0",
+    "react": "https://esm.sh/react@^19.2.4",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/"
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "xlsx": "https://esm.sh/xlsx@^0.18.5",
+    "lucide-react": "https://esm.sh/lucide-react@^0.571.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
   }
 }
 </script>
 </head>
 <body class="bg-gray-100 min-h-screen">
   <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
