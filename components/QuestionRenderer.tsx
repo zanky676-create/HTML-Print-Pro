@@ -90,7 +90,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
                 <div 
                   contentEditable 
                   suppressContentEditableWarning 
-                  className="flex-1 outline-none focus:bg-blue-50/50 px-0.5 rounded"
+                  className="flex-1 outline-none focus:bg-blue-50/50 px-0.5 rounded overflow-x-auto"
                   dangerouslySetInnerHTML={{ __html: val }}
                 />
               </div>
@@ -112,7 +112,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
               <div 
                 contentEditable 
                 suppressContentEditableWarning 
-                className="flex-1 outline-none focus:bg-blue-50/50 px-0.5 rounded"
+                className="flex-1 outline-none focus:bg-blue-50/50 px-0.5 rounded overflow-x-auto"
                 dangerouslySetInnerHTML={{ __html: val }}
               />
             </div>
@@ -134,7 +134,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, showExpla
           <div 
             contentEditable 
             suppressContentEditableWarning 
-            className="mb-1.5 outline-none focus:bg-blue-50/50 px-0.5 rounded w-full font-medium"
+            className="mb-1.5 outline-none focus:bg-blue-50/50 px-0.5 rounded w-full overflow-x-auto font-medium"
             dangerouslySetInnerHTML={{ __html: question.soal }}
           />
 
